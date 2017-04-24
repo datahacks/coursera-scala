@@ -1,5 +1,8 @@
 *.class
 *.log
 
-target/
+.cache-main
+.cache-tests
 
+target/
+.settings/
