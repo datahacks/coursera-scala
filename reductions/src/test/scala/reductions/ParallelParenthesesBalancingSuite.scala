@@ -45,5 +45,70 @@ class ParallelParenthesesBalancingSuite extends FunSuite {
     check(").", false)
   }
 
+  test("balance should work for string of multiple length") {
+    def check(input: String, expected: Boolean) =
+      assert(balance(input.toArray) == expected,
+        s"balance($input) should be $expected")
 
+    check("(my name is lakhan(anil kapoor))", true)
+    check(")earth is blue(nila)(", false)
+    check("((open))", true)
+    check("))close((", false)
+    check(".)buster's mal heart))))))", false)
+    check(".((((((((((((((((((((((", false)
+    check("(.......))))))))))", false)
+    check(").()()()()()()()()", false)
+    check("()()()()()()()()", true)
+  }
+
+  test("parBalance should work for empty string") {
+    def check(input: String, expected: Boolean) =
+      assert(parBalance(input.toArray, 10) == expected,
+        s"parBalance($input) should be $expected")
+
+    check("", true)
+  }
+
+  test("parBalance should work for string of length 1") {
+    def check(input: String, expected: Boolean) =
+      assert(parBalance(input.toArray, 10) == expected,
+        s"parBalance($input) should be $expected")
+
+    check("(", false)
+    check(")", false)
+    check(".", true)
+  }
+
+  test("parBalance should work for string of length 2") {
+    def check(input: String, expected: Boolean) =
+      assert(parBalance(input.toArray, 10) == expected,
+        s"parBalance($input) should be $expected")
+
+    check("()", true)
+    check(")(", false)
+    check("((", false)
+    check("))", false)
+    check(".)", false)
+    check(".(", false)
+    check("(.", false)
+    check(").", false)
+  }
+
+  test("parBalance should work for string of multiple length") {
+    def check(input: String, expected: Boolean) =
+      assert(parBalance(input.toArray, 10) == expected,
+        s"parBalance($input) should be $expected")
+
+    check("(my name is lakhan(anil kapoor))", true)
+    check(")earth is blue(nila)(", false)
+    check("((open))", true)
+    check("))close((", false)
+    check(".)buster's mal heart))))))", false)
+    check(".((((((((((((((((((((((", false)
+    check("(.......))))))))))", false)
+    check(").()()()()()()()()", false)
+    check("()()()()()()()()", true)
+  }
+
+ 
 }
